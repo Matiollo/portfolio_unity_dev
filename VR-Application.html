@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VR Application - Anastasiia Krasnoshapka</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/ak_icon.png">
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin:0; background-color:#0a0b0d; background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px); background-size:64px 64px; color:#e8eaed; font-family:'Space Grotesk',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+    ::selection { background:rgba(47,230,168,.25); }
+    a { color:inherit; text-decoration:none; }
+    @keyframes ak-spin { to { transform: rotate(360deg); } }
+    @media (max-width:860px){ [data-two]{ grid-template-columns:1fr !important; } [data-shots]{ grid-template-columns:1fr !important; } }
+    @media (max-width:640px){ body{ background-size:40px 40px; } }
+    @media (hover: hover) and (pointer: fine) {
+      *, *::before, *::after { cursor: none !important; }
+    }
+  </style>
+  <style>
+  .dc-hv-0.ak-on{color:#2fe6a8 !important;}
+  .dc-hv-1.ak-on{color:#2fe6a8 !important;}
+  </style>
+</head>
+<body>
+<div style="position:relative;width:100%;">
+  <div id="ak-loader" style="position:fixed;inset:0;z-index:9000;background:#0a0b0d;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transition:opacity .6s ease;font-family:'JetBrains Mono',monospace;">
+    <div style="width:46px;height:46px;border:2px solid rgba(47,230,168,.2);border-top-color:#2fe6a8;border-radius:50%;animation:ak-spin .9s linear infinite;"></div>
+    <div style="width:min(280px,64vw);">
+      <div style="display:flex;justify-content:space-between;font-size:11px;letter-spacing:.18em;color:#7e858f;margin-bottom:10px;text-transform:uppercase;"><span>Loading project</span><span><span data-loader-pct>000</span>%</span></div>
+      <div style="height:2px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden;"><div data-loader-bar style="height:100%;width:0%;background:#2fe6a8;"></div></div>
+    </div>
+  </div>
+
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,5vw,56px);backdrop-filter:blur(10px);background:linear-gradient(180deg,rgba(10,11,13,.85),rgba(10,11,13,0));">
+    <a href="index.html" data-cursor style="display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#9aa0a8;text-transform:uppercase;" class="dc-hv-0"><span style="color:#2fe6a8;">←</span> Back to index</a>
+    <span style="display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border:1px solid rgba(47,230,168,.5);border-radius:6px;color:#2fe6a8;font-family:'JetBrains Mono',monospace;font-size:13px;">AK</span>
+  </nav>
+
+  <header style="padding:clamp(120px,18vh,200px) clamp(20px,5vw,56px) clamp(40px,7vh,80px);max-width:1100px;margin:0 auto;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.28em;color:#2fe6a8;text-transform:uppercase;margin-bottom:24px;">VR Application</div>
+    <h1 style="margin:0;font-size:clamp(40px,8vw,108px);font-weight:700;letter-spacing:-.02em;line-height:.92;">NDA</h1>
+    <p style="max-width:640px;color:#9aa0a8;font-size:clamp(16px,1.9vw,20px);line-height:1.65;margin:30px 0 0;">This project is under NDA, so I can describe how it was built but can't say much about the product itself. It's a Unity VR application that connects to our custom server over gRPC and receives a video stream from a separate OvenMediaEngine (OME) server. I was solely responsible for building the application, while my colleagues set up the servers and other parts of the system that were outside the Unity application's scope.</p>
+  </header>
+
+  <section style="max-width:1100px;margin:0 auto;padding:clamp(50px,8vh,100px) clamp(20px,5vw,56px) clamp(40px,7vh,90px);">
+    <div style="max-width:1100px;width:100%;margin:0 auto;padding:0 ;display:flex;justify-content:space-between;align-items:baseline;margin-bottom:26px;">
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.28em;color:#2fe6a8;text-transform:uppercase;">Some of the things I worked on</div>
+    </div>
+    
+    <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);display:grid;grid-template-columns:1fr;gap:clamp(20px,4vw,60px);padding:clamp(28px,4vh,48px) 0;border-top:1px solid rgba(255,255,255,.1);" data-two>
+      <div>
+        <h3 style="margin:0 0 16px;font-size:clamp(22px,2.8vw,32px);font-weight:600;letter-spacing:-.01em;">gRPC</h3>
+        <p style="margin:0;color:#9aa0a8;font-size:clamp(15px,1.7vw,18px);line-height:1.75;text-wrap:pretty;">The application had to communicate with one of the servers over gRPC, which turned out to be an interesting task. Unity was restricted to HTTP/1, and I could find very few gRPC implementations for Unity that worked within that limitation. On top of that, some of the setups I tried worked in the editor but couldn't be built to run on the headset.</p>
+      </div>
+    </div>
+  
+    <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);display:grid;grid-template-columns:1fr;gap:clamp(20px,4vw,60px);padding:clamp(28px,4vh,48px) 0;border-top:1px solid rgba(255,255,255,.1);" data-two>
+      <div>
+        <h3 style="margin:0 0 16px;font-size:clamp(22px,2.8vw,32px);font-weight:600;letter-spacing:-.01em;">Custom video player</h3>
+        <p style="margin:0;color:#9aa0a8;font-size:clamp(15px,1.7vw,18px);line-height:1.75;text-wrap:pretty;">To receive the video stream from the OME server, I first tried several existing WebSocket libraries for Unity. None of them worked, so I ended up using the standard WebSockets and writing a custom video player. It emulated the behavior of the OME test webpage to receive frames from the server, then rendered them on the inside of a sphere to create a 360° video effect.</p>
+    </div>
+  
+    <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);display:grid;grid-template-columns:1fr;gap:clamp(20px,4vw,60px);padding:clamp(28px,4vh,48px) 0;border-top:1px solid rgba(255,255,255,.1);" data-two>
+      <div>
+        <h3 style="margin:0 0 16px;font-size:clamp(22px,2.8vw,32px);font-weight:600;letter-spacing:-.01em;">The whole application</h3>
+        <p style="margin:0;color:#9aa0a8;font-size:clamp(15px,1.7vw,18px);line-height:1.75;text-wrap:pretty;">I was the only developer on this application, so beyond the server integrations, I was responsible for its architecture, UI, testing, documentation and everything else. It was a bit stressful, but it definitely helped me grow as a developer.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1100px;margin:0 auto;padding:0 clamp(20px,5vw,56px) clamp(80px,12vh,140px);">
+    <div style="text-align:center;">
+      <a href="index.html#work" data-cursor style="display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.14em;color:#9aa0a8;text-transform:uppercase;" class="dc-hv-1"><span style="color:#2fe6a8;">←</span> Back to all projects</a>
+    </div>
+  </section>
+</div>
+<script type="module">
+  import { initAll } from './portfolio.js';
+  initAll();
+</script>
+</body>
+</html>

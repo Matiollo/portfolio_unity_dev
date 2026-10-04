@@ -1,25 +1,291 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Anastasiia Krasnoshapka — Unity Developer</title>
-<link rel="icon" type="image/svg+xml" href="src/assets/favicon.svg" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anastasiia Krasnoshapka</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/ak_icon.png">
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background-color: #0a0b0d;
+      background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+      background-size: 64px 64px;
+      color: #e8eaed;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    ::selection { background: rgba(47,230,168,.25); }
+    a { color: inherit; text-decoration: none; }
+    @keyframes ak-blink { 0%,49%{opacity:1} 50%,100%{opacity:0} }
+    @keyframes ak-bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+    @keyframes ak-spin { to { transform: rotate(360deg); } }
+    @media (max-width: 860px) {
+      [data-hero-b] { grid-template-columns: 1fr !important; }
+      [data-about-grid] { grid-template-columns: 1fr !important; }
+      [data-edu-grid] { grid-template-columns: 1fr !important; }
+      [data-project-row] { grid-template-columns: 44px 1fr 22px !important; }
+      [data-project-row] [data-project-tag] { display: none !important; }
+    }
+    @media (max-width: 640px) { body { background-size: 40px 40px; } }
+    @media (hover: hover) and (pointer: fine) {
+      *, *::before, *::after { cursor: none !important; }
+    }
+  </style>
+  <style>
+  .dc-hv-0.ak-on{color:#2fe6a8 !important;}
+  .dc-hv-1.ak-on{color:#2fe6a8 !important;}
+  .dc-hv-2.ak-on{color:#2fe6a8 !important;}
+  .dc-hv-3.ak-on{color:#2fe6a8 !important;}
+  .dc-hv-4.ak-on{border-color:rgba(47,230,168,.6) !important;color:#2fe6a8 !important;transform:translateY(-3px) !important;}
+  .dc-hv-5.ak-on{border-color:rgba(47,230,168,.6) !important;color:#2fe6a8 !important;transform:translateY(-3px) !important;}
+  .dc-hv-6.ak-on{border-color:rgba(47,230,168,.6) !important;color:#2fe6a8 !important;transform:translateY(-3px) !important;}
+  .dc-hv-7.ak-on{border-color:rgba(47,230,168,.6) !important;color:#2fe6a8 !important;transform:translateY(-3px) !important;}
+  .dc-hv-8.ak-on{border-color:rgba(47,230,168,.6) !important;color:#2fe6a8 !important;transform:translateY(-3px) !important;}
+  .dc-hv-9.ak-on{border-color:rgba(47,230,168,.6) !important;color:#2fe6a8 !important;transform:translateY(-3px) !important;}
+  .dc-hv-10.ak-on{border-color:rgba(47,230,168,.6) !important;color:#2fe6a8 !important;transform:translateY(-3px) !important;}
+  .dc-hv-11.ak-on{border-color:rgba(47,230,168,.6) !important;color:#2fe6a8 !important;transform:translateY(-3px) !important;}
+  .dc-hv-12.ak-on{background:rgba(47,230,168,.04) !important;padding-left:20px !important;}
+  .dc-hv-13.ak-on{background:rgba(47,230,168,.04) !important;padding-left:20px !important;}
+  .dc-hv-14.ak-on{background:rgba(47,230,168,.04) !important;padding-left:20px !important;}
+  .dc-hv-15.ak-on{padding-left:16px !important;color:#2fe6a8 !important;}
+  .dc-hv-16.ak-on{padding-left:16px !important;color:#2fe6a8 !important;}
+  .dc-hv-17.ak-on{padding-left:16px !important;color:#2fe6a8 !important;}
+  </style>
 </head>
 <body>
-<div id="root"></div>
+<div style="position:relative;width:100%;overflow:hidden;">
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <!-- ===== LOADER ===== -->
+  <div id="ak-loader" style="position:fixed;inset:0;z-index:9000;background:#0a0b0d;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transition:opacity .6s ease;font-family:'JetBrains Mono',monospace;">
+    <div style="width:46px;height:46px;border:2px solid rgba(47,230,168,.2);border-top-color:#2fe6a8;border-radius:50%;animation:ak-spin .9s linear infinite;"></div>
+    <div style="width:min(280px,64vw);">
+      <div style="display:flex;justify-content:space-between;font-size:11px;letter-spacing:.18em;color:#7e858f;margin-bottom:10px;text-transform:uppercase;">
+        <span>Initializing</span><span><span data-loader-pct>000</span>%</span>
+      </div>
+      <div style="height:2px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden;">
+        <div data-loader-bar style="height:100%;width:0%;background:#2fe6a8;transition:width .1s linear;"></div>
+      </div>
+    </div>
+    <!-- <div style="font-size:10px;letter-spacing:.3em;color:#41464d;text-transform:uppercase;">AK · Unity Developer</div> -->
+  </div>
 
-<script type="text/babel" src="components/Wood.jsx"></script>
-<script type="text/babel" src="components/MainPage.jsx"></script>
-<script type="text/babel" src="components/ProjectPage.jsx"></script>
-<script type="text/babel" src="components/App.jsx"></script>
+  <!-- ===== NAV ===== -->
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,5vw,56px);backdrop-filter:blur(10px);background:linear-gradient(180deg,rgba(10,11,13,.85),rgba(10,11,13,0));">
+    <!-- <a href="#top" data-cursor style="display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.04em;">
+      <span style="display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border:1px solid rgba(47,230,168,.5);border-radius:6px;color:#2fe6a8;font-family:'JetBrains Mono',monospace;font-size:13px;">AK</span>
+    </a> -->
+    <a href="#top" data-cursor style="display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.04em;">
+      <img src="assets/ak_icon.png" alt="AK" width="30" height="30" style="display:block;width:30px;height:30px;object-fit:contain;">
+    </a>
+    <div style="display:flex;gap:clamp(14px,2.4vw,34px);font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#9aa0a8;">
+      <a href="#about" data-cursor style="transition:color .2s;" class="dc-hv-0">About</a>
+      <a href="#tools" data-cursor style="transition:color .2s;" class="dc-hv-1">Tools</a>
+      <a href="#work" data-cursor style="transition:color .2s;" class="dc-hv-2">Projects</a>
+      <a href="#education" data-cursor style="transition:color .2s;" class="dc-hv-2">Education</a>
+      <a href="#contact" data-cursor style="transition:color .2s;" class="dc-hv-3">Contact</a>
+    </div>
+  </nav>
+
+  <div id="top"></div>
+
+  <!-- ===== HERO ===== -->
+  <header style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;gap:30px;padding:140px clamp(20px,5vw,56px) 80px;position:relative;">
+    <div style="display:inline-flex;align-self:flex-start;align-items:center;gap:12px;padding:10px 18px;border:1px solid rgba(47,230,168,.45);border-radius:8px;background:rgba(47,230,168,.06);">
+      <!-- <span style="width:8px;height:8px;border-radius:50%;background:#2fe6a8;box-shadow:0 0 12px #2fe6a8;"></span> -->
+      <span style="font-family:'JetBrains Mono',monospace;font-size:clamp(13px,1.5vw,16px);letter-spacing:.22em;color:#2fe6a8;text-transform:uppercase;font-weight:500;white-space:nowrap;">Unity Developer</span>
+    </div>
+    <h1 style="margin:0;font-weight:700;line-height:.9;font-size:clamp(46px,11vw,168px);letter-spacing:-.02em;">
+      <span data-magnet-word style="display:block;">Anastasiia</span>
+      <span data-magnet-word style="display:block;color:#7e858f;">Krasnoshapka</span>
+    </h1>
+    <!-- <div style="display:flex;align-items:center;gap:14px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.24em;color:#5a606a;text-transform:uppercase;">
+      <span style="display:inline-block;width:36px;height:1px;background:#2fe6a8;"></span>
+      <span>Hello!</span>
+    </div> -->
+    <!-- <div style="position:absolute;bottom:34px;right:clamp(20px,5vw,56px);display:flex;flex-direction:column;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.28em;color:#5a606a;text-transform:uppercase;">
+      <span>Scroll</span>
+      <span style="display:inline-block;width:1px;height:34px;background:linear-gradient(#2fe6a8,transparent);animation:ak-bob 1.8s ease-in-out infinite;"></span>
+    </div> -->
+  </header>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);padding:clamp(70px,11vh,130px) clamp(20px,5vw,56px);max-width:1200px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(36px,6vw,80px);align-items:center;" data-about-grid>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.28em;color:#2fe6a8;text-transform:uppercase;margin-bottom:24px;">About</div>
+        <!-- <p style="font-size:clamp(20px,2.6vw,32px);line-height:1.5;font-weight:500;margin:0 0 28px;letter-spacing:-.01em;">I love making games, solving technical challenges, and reading players' reviews — especially the positive ones.</p> -->
+        <p style="color:#9aa0a8;font-size:clamp(15px,1.7vw,18px);line-height:1.7;max-width:520px;margin:0 0 20px;">I am a Ukrainian game developer currently living in Winnipeg, Canada. I have been playing games on and off for my whole life, but my interest in game development started mainly in university where I got to make my own small game from scratch for a computer graphics class. I liked a lot of different subjects, but this one became my favorite so I decided to move in this direction after graduation.</p>
+        <p style="color:#9aa0a8;font-size:clamp(15px,1.7vw,18px);line-height:1.7;max-width:520px;margin:0;">Currently, I work remotely for a Ukrainian game studio Mauris where I have had the chance to work on several cool projects, learn from great people, and grow from an eager to learn inexperienced new grad to a still eager to learn but now a bit more experienced developer :)</p>
+        <div style="margin-top:38px;display:flex;align-items:baseline;gap:16px;">
+          <span style="font-size:clamp(48px,7vw,84px);font-weight:700;line-height:1;color:#2fe6a8;letter-spacing:-.03em;">2</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:#7e858f;">years of<br>experience</span>
+        </div>
+      </div>
+      <div style="position:relative;">
+        <div style="aspect-ratio:1/1;width:100%;border:1px solid rgba(255,255,255,.1);border-radius:14px;overflow:hidden;background:repeating-linear-gradient(45deg,#101317,#101317 10px,#0d1014 10px,#0d1014 20px);display:flex;align-items:center;justify-content:center;">
+          <!-- <span style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;color:#5a606a;text-transform:uppercase;">[ portrait.jpg ]</span> -->
+          <img src="assets/portrait.jpg" alt="Anastasiia Krasnoshapka" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <!-- <div style="position:absolute;top:14px;left:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;color:#2fe6a8;">+ A.KRASNOSHAPKA</div> -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TOOLS ===== -->
+  <section id="tools" data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);padding:clamp(50px,8vh,90px) clamp(20px,5vw,56px);max-width:1200px;margin:0 auto;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.28em;color:#2fe6a8;text-transform:uppercase;margin-bottom:28px;">Tools</div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;">
+      
+        <span data-cursor style="display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border:1px solid rgba(255,255,255,.1);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:14px;color:#cfd3d8;background:rgba(16,19,23,.5);transition:border-color .25s,color .25s,transform .25s;" class="dc-hv-4">
+          Unity
+        </span>
+      
+        <span data-cursor style="display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border:1px solid rgba(255,255,255,.1);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:14px;color:#cfd3d8;background:rgba(16,19,23,.5);transition:border-color .25s,color .25s,transform .25s;" class="dc-hv-5">
+          C#
+        </span>
+      
+        <span data-cursor style="display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border:1px solid rgba(255,255,255,.1);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:14px;color:#cfd3d8;background:rgba(16,19,23,.5);transition:border-color .25s,color .25s,transform .25s;" class="dc-hv-6">
+          Zenject
+        </span>
+      
+        <span data-cursor style="display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border:1px solid rgba(255,255,255,.1);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:14px;color:#cfd3d8;background:rgba(16,19,23,.5);transition:border-color .25s,color .25s,transform .25s;" class="dc-hv-7">
+          Meta SDK
+        </span>
+      
+        <span data-cursor style="display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border:1px solid rgba(255,255,255,.1);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:14px;color:#cfd3d8;background:rgba(16,19,23,.5);transition:border-color .25s,color .25s,transform .25s;" class="dc-hv-8">
+          XRI Toolkit
+        </span>
+      
+        <span data-cursor style="display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border:1px solid rgba(255,255,255,.1);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:14px;color:#cfd3d8;background:rgba(16,19,23,.5);transition:border-color .25s,color .25s,transform .25s;" class="dc-hv-9">
+          WebRTC
+        </span>
+      
+        <span data-cursor style="display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border:1px solid rgba(255,255,255,.1);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:14px;color:#cfd3d8;background:rgba(16,19,23,.5);transition:border-color .25s,color .25s,transform .25s;" class="dc-hv-10">
+          gRPC
+        </span>
+      
+        <span data-cursor style="display:inline-flex;align-items:center;gap:9px;padding:11px 18px;border:1px solid rgba(255,255,255,.1);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:14px;color:#cfd3d8;background:rgba(16,19,23,.5);transition:border-color .25s,color .25s,transform .25s;" class="dc-hv-11">
+          WebSockets
+        </span>
+      
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="work" data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);padding:clamp(60px,9vh,110px) clamp(20px,5vw,56px);max-width:1200px;margin:0 auto;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.28em;color:#2fe6a8;text-transform:uppercase;margin-bottom:30px;">Projects</div>
+    <div style="display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,.1);">
+      
+        <a href="Corsairs-Legacy.html" data-cursor style="display:grid;grid-template-columns:1.4fr 1fr 28px;align-items:center;gap:20px;padding:clamp(22px,3.2vw,38px) 8px;border-bottom:1px solid rgba(255,255,255,.1);transition:background .3s,padding-left .3s;position:relative;" class="dc-hv-12" data-project-row>
+          <span style="font-size:clamp(22px,3.2vw,40px);font-weight:600;letter-spacing:-.01em;">Corsairs Legacy</span>
+          <span data-project-tag style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#7e858f;letter-spacing:.04em;">PC/Console Game · 2024-2026</span>
+          <span style="color:#2fe6a8;font-size:20px;justify-self:end;">→</span>
+        </a>
+      
+        <a href="VR-Application.html" data-cursor style="display:grid;grid-template-columns:1.4fr 1fr 28px;align-items:center;gap:20px;padding:clamp(22px,3.2vw,38px) 8px;border-bottom:1px solid rgba(255,255,255,.1);transition:background .3s,padding-left .3s;position:relative;" class="dc-hv-13" data-project-row>
+          <span style="font-size:clamp(22px,3.2vw,40px);font-weight:600;letter-spacing:-.01em;">NDA</span>
+          <span data-project-tag style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#7e858f;letter-spacing:.04em;">VR Application · 2024</span>
+          <span style="color:#2fe6a8;font-size:20px;justify-self:end;">→</span>
+        </a>
+      
+        <a href="XR-Application.html" data-cursor style="display:grid;grid-template-columns:1.4fr 1fr 28px;align-items:center;gap:20px;padding:clamp(22px,3.2vw,38px) 8px;border-bottom:1px solid rgba(255,255,255,.1);transition:background .3s,padding-left .3s;position:relative;" class="dc-hv-14" data-project-row>
+          <span style="font-size:clamp(22px,3.2vw,40px);font-weight:600;letter-spacing:-.01em;">NDA</span>
+          <span data-project-tag style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#7e858f;letter-spacing:.04em;">XR Application · 2024</span>
+          <span style="color:#2fe6a8;font-size:20px;justify-self:end;">→</span>
+        </a>
+      
+    </div>
+  </section>
+
+  <!-- ===== EDUCATION ===== -->
+  <section id="education" data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);padding:clamp(60px,9vh,110px) clamp(20px,5vw,56px);max-width:1200px;margin:0 auto;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.28em;color:#2fe6a8;text-transform:uppercase;margin-bottom:30px;">Education</div>
+    <div style="display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(30px,6vw,70px);" data-edu-grid>
+      <div style="border-left:1px solid rgba(47,230,168,.4);padding-left:24px;">
+        <div style="font-size:clamp(22px,2.8vw,30px);font-weight:600;line-height:1.25;">B.S. Computer Science</div>
+        <div style="color:#9aa0a8;margin-top:10px;font-size:16px;">Kyiv Polytechnic Institute</div>
+        <div style="font-family:'JetBrains Mono',monospace;color:#2fe6a8;margin-top:14px;font-size:13px;letter-spacing:.1em;">2020 — 2024</div>
+      </div>
+      <div>
+        <!-- <p style="color:#9aa0a8;font-size:clamp(15px,1.7vw,18px);line-height:1.75;margin:0;text-wrap:pretty;">I studied computer science at KPI. There I took a graphics course and built a 3D game as a course project, and that became the direction I wanted to keep moving in. University gave me a lot of useful skills, such as design principles, multithreading, and comfort with C#. But most of what I actually use day to day I learned after graduating, from the projects I got to work on, from feedback from my senior colleagues, and from trying things and fixing them when they break.</p> -->
+        <p style="color:#9aa0a8;font-size:clamp(15px,1.7vw,18px);line-height:1.75;margin:0 0 20px;text-wrap:pretty;">When I was in high school, I participated in provincial level mathematics competitions, and scored in top 10 of my province (oblast' in Ukraine). So, when the time came to choose a career, I decided to go into Computer Science as it seemed to have the logical problems that I liked but also be more practical than pure mathematics.</p>
+        <p style="color:#9aa0a8;font-size:clamp(15px,1.7vw,18px);line-height:1.75;margin:0 0 20px;text-wrap:pretty;">At KPI I got a lot of knowledge beyond just coding. We did learn how to write clean good-quality code and design complex applications, but more importantly we learned that you should always think about the users first and make sure that what you're building has real value to people.</p>
+        <p style="color:#9aa0a8;font-size:clamp(15px,1.7vw,18px);line-height:1.75;margin:0;text-wrap:pretty;">I think getting my Bachelor's from KPI was a very good choice also because of the variety of subjects, which allowed me to try myself in a lot of different things and led me to choose the direction that I really like now.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);padding:clamp(70px,11vh,140px) clamp(20px,5vw,56px) clamp(90px,14vh,160px);max-width:1200px;margin:0 auto;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.28em;color:#2fe6a8;text-transform:uppercase;margin-bottom:26px;">Contact</div>
+    <!-- <h2 style="font-size:clamp(34px,6vw,80px);font-weight:700;letter-spacing:-.02em;margin:0 0 40px;line-height:1;">Let's build<br>something.</h2> -->
+    <div style="display:flex;flex-direction:column;border-top:1px solid rgba(255,255,255,.1);max-width:680px;">
+      
+        <a href="mailto:anastasiia.krasnoshapka@gmail.com" target="_blank" data-cursor style="display:flex;align-items:center;justify-content:space-between;padding:22px 6px;border-bottom:1px solid rgba(255,255,255,.1);transition:padding-left .3s,color .3s;" class="dc-hv-15">
+          <span style="display:flex;gap:18px;align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#5a606a;letter-spacing:.12em;">EMAIL</span><span style="font-size:clamp(16px,2vw,22px);">anastasiia.krasnoshapka@gmail.com</span></span>
+          <span style="color:#2fe6a8;">→</span>
+        </a>
+      
+        <a href="https://github.com/matiollo" target="_blank" data-cursor style="display:flex;align-items:center;justify-content:space-between;padding:22px 6px;border-bottom:1px solid rgba(255,255,255,.1);transition:padding-left .3s,color .3s;" class="dc-hv-16">
+          <span style="display:flex;gap:18px;align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#5a606a;letter-spacing:.12em;">GITHUB</span><span style="font-size:clamp(16px,2vw,22px);">github.com/matiollo</span></span>
+          <span style="color:#2fe6a8;">→</span>
+        </a>
+      
+        <a href="https://www.linkedin.com/in/anastasiia-krasnoshapka/" target="_blank" data-cursor style="display:flex;align-items:center;justify-content:space-between;padding:22px 6px;border-bottom:1px solid rgba(255,255,255,.1);transition:padding-left .3s,color .3s;" class="dc-hv-17">
+          <span style="display:flex;gap:18px;align-items:baseline;"><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#5a606a;letter-spacing:.12em;">LINKEDIN</span><span style="font-size:clamp(16px,2vw,22px);">linkedin.com/in/anastasiia-krasnoshapka</span></span>
+          <span style="color:#2fe6a8;">→</span>
+        </a>
+      
+    </div>
+  </section>
+
+  <!-- spacer so the tucked footer is revealed -->
+  <!-- <div style="height:clamp(360px,52vh,520px);"></div> -->
+
+  <!-- ===== FOOTER (tucked under) ===== -->
+  <footer style="position:fixed;left:0;right:0;bottom:0;z-index:-1;padding:clamp(40px,7vh,80px) clamp(20px,5vw,56px);display:flex;flex-direction:column;justify-content:flex-end;min-height:clamp(360px,52vh,520px);background:#07080a;">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:30px;border-top:1px solid rgba(255,255,255,.08);padding-top:28px;">
+      <div style="font-size:clamp(40px,11vw,150px);font-weight:700;letter-spacing:-.03em;line-height:.85;color:#13161a;">KRASNO<br>SHAPKA</div>
+      <div data-bottom-reveal style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#41464d;text-align:right;text-transform:uppercase;opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;">
+        <!-- <div style="color:#2fe6a8;">● Available 2026</div> -->
+        <!-- <div style="margin-top:8px;">Unity · VR · XR</div> -->
+        <!-- <div style="margin-top:8px;">© Anastasiia Krasnoshapka</div> -->
+      </div>
+    </div>
+  </footer>
+
+</div>
+<script type="module">
+  import { initAll, initMagnetic } from './portfolio.js';
+  function wrapMagnetWords() {
+    document.querySelectorAll('[data-magnet-word]').forEach((el) => {
+      if (el.dataset.wrapped) return;
+      const text = el.textContent;
+      el.textContent = '';
+      for (const ch of text) {
+        const s = document.createElement('span');
+        s.setAttribute('data-magnet', '');
+        s.textContent = ch;
+        s.style.display = 'inline-block';
+        s.style.transition = 'transform .15s ease, color .3s ease';
+        s.style.willChange = 'transform';
+        el.appendChild(s);
+      }
+      el.dataset.wrapped = '1';
+    });
+  }
+  initAll();
+  wrapMagnetWords();
+  initMagnetic();
+</script>
 </body>
 </html>

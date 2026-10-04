@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Corsairs Legacy - Anastasiia Krasnoshapka</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/ak_icon.png">
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin:0; background-color:#0a0b0d; background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px); background-size:64px 64px; color:#e8eaed; font-family:'Space Grotesk',system-ui,sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+    ::selection { background:rgba(47,230,168,.25); }
+    a { color:inherit; text-decoration:none; }
+    @keyframes ak-spin { to { transform: rotate(360deg); } }
+    @media (max-width:860px){ [data-two]{ grid-template-columns:1fr !important; } [data-shots]{ grid-template-columns:1fr !important; } }
+    @media (max-width:640px){ body{ background-size:40px 40px; } }
+    @media (hover: hover) and (pointer: fine) {
+      *, *::before, *::after { cursor: none !important; }
+    }
+  </style>
+<style>
+.dc-hv-0.ak-on{color:#2fe6a8 !important;}
+.dc-hv-1.ak-on{border-color:#2fe6a8 !important;color:#2fe6a8 !important;background:rgba(47,230,168,.06) !important;}
+.dc-hv-2.ak-on{color:#2fe6a8 !important;}
+</style>
+</head>
+<body>
+<div style="position:relative;width:100%;">
+  <div id="ak-loader" style="position:fixed;inset:0;z-index:9000;background:#0a0b0d;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transition:opacity .6s ease;font-family:'JetBrains Mono',monospace;">
+    <div style="width:46px;height:46px;border:2px solid rgba(47,230,168,.2);border-top-color:#2fe6a8;border-radius:50%;animation:ak-spin .9s linear infinite;"></div>
+    <div style="width:min(280px,64vw);">
+      <div style="display:flex;justify-content:space-between;font-size:11px;letter-spacing:.18em;color:#7e858f;margin-bottom:10px;text-transform:uppercase;"><span>Loading project</span><span><span data-loader-pct>000</span>%</span></div>
+      <div style="height:2px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden;"><div data-loader-bar style="height:100%;width:0%;background:#2fe6a8;"></div></div>
+    </div>
+  </div>
+
+  <nav style="position:fixed;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,5vw,56px);backdrop-filter:blur(10px);background:linear-gradient(180deg,rgba(10,11,13,.85),rgba(10,11,13,0));">
+    <a href="index.html" data-cursor style="display:flex;align-items:center;gap:12px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.14em;color:#9aa0a8;text-transform:uppercase;" class="dc-hv-0"><span style="color:#2fe6a8;">←</span> Back to index</a>
+    <span style="display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border:1px solid rgba(47,230,168,.5);border-radius:6px;color:#2fe6a8;font-family:'JetBrains Mono',monospace;font-size:13px;">AK</span>
+  </nav>
+
+  <header style="padding:clamp(120px,18vh,200px) clamp(20px,5vw,56px) clamp(40px,7vh,80px);max-width:1100px;margin:0 auto;">
+    <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.28em;color:#2fe6a8;text-transform:uppercase;margin-bottom:24px;">PC/Console Game</div>
+    <h1 style="margin:0;font-size:clamp(44px,9vw,120px);font-weight:700;letter-spacing:-.02em;line-height:.92;">Corsairs Legacy</h1>
+    <p style="max-width:640px;color:#9aa0a8;font-size:clamp(16px,1.9vw,20px);line-height:1.65;margin:30px 0 0;">Corsairs Legacy is an open-world pirate RPG set in the Caribbean, and it is available on Steam in early access.</p>
+    <p style="max-width:640px;color:#9aa0a8;font-size:clamp(16px,1.9vw,20px);line-height:1.65;margin:30px 0 0;">This was the first big project I joined at Mauris. By the time I came in, the game already had a large codebase and a team of developers working on it, so a big part of my first months was learning how everything fit together before I could start adding things of my own. I worked on a lot of different areas over time, but on the gameplay side I was mostly responsible for the land part of the game: quests, NPCs, various windows, and everything else the player does after they step off the ship.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:38px;">
+      <a href="https://store.steampowered.com/app/1594880/Corsairs_Legacy__Pirate_Action_RPG__Sea_Battles/" target="_blank" data-cursor style="display:inline-flex;align-items:center;gap:13px;padding:15px 26px;border:1px solid #2fe6a8;border-radius:8px;background:rgba(16,19,23,.6);font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#e8eaed;transition:border-color .25s ease,color .25s ease,background .25s ease;" class="dc-hv-1">
+        <!-- <span style="color:#2fe6a8;">▸</span> --> View on Steam <span style="color:#2fe6a8;padding:0px 0px 3px 0px;font-size:20px;justify-self:end;">→</span>
+      </a>
+    </div>
+  </header>
+
+  <section style="max-width:1100px;margin:0 auto;padding:clamp(40px,7vh,90px) clamp(20px,5vw,56px) 0;">
+      <div style="max-width:1100px;width:100%;margin:0 auto;padding:0;display:flex;justify-content:space-between;align-items:baseline;margin-bottom:26px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.28em;color:#2fe6a8;text-transform:uppercase;">Some of the things I worked on</div>
+      </div>
+    
+      <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);display:grid;gap:clamp(20px,4vw,60px);padding:clamp(28px,4vh,48px) 0;border-top:1px solid rgba(255,255,255,.1);" data-two>
+        <div>
+          <h3 style="margin:0 0 16px;font-size:clamp(22px,2.8vw,32px);font-weight:600;letter-spacing:-.01em;">Save system</h3>
+          <p style="margin:0;color:#9aa0a8;font-size:clamp(15px,1.7vw,18px);line-height:1.75;text-wrap:pretty;">I wrote new save logic with multiple player profiles and preview data for every save, and set up migration so that people who had saves from the old system did not lose them. Later I also made the saves much more precise. Now every spawned NPC, where they were standing, how far a fight had progressed and what loot was generated all come back exactly as the player left them, which was not the case before.</p>
+        </div>
+      </div>
+    
+      <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);display:grid;gap:clamp(20px,4vw,60px);padding:clamp(28px,4vh,48px) 0;border-top:1px solid rgba(255,255,255,.1);" data-two>
+        <div>
+          <h3 style="margin:0 0 16px;font-size:clamp(22px,2.8vw,32px);font-weight:600;letter-spacing:-.01em;">Memory and performance</h3>
+          <p style="margin:0;color:#9aa0a8;font-size:clamp(15px,1.7vw,18px);line-height:1.75;text-wrap:pretty;">This was an ongoing thing rather than one task. I worked on loading and unloading resources only when they are actually needed, culling NPCs that are too far from the player, splitting some heavy scenes into several smaller ones, and going through code to reduce how much garbage it produces so the game does not stutter on collection.</p>
+        </div>
+      </div>
+    
+      <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);display:grid;gap:clamp(20px,4vw,60px);padding:clamp(28px,4vh,48px) 0;border-top:1px solid rgba(255,255,255,.1);" data-two>
+        <div>
+          <h3 style="margin:0 0 16px;font-size:clamp(22px,2.8vw,32px);font-weight:600;letter-spacing:-.01em;">Trading economy</h3>
+          <p style="margin:0;color:#9aa0a8;font-size:clamp(15px,1.7vw,18px);line-height:1.75;text-wrap:pretty;">I worked on the trading economy between islands, and also built editor tools to visualize it. Before that, prices in all stores were just randomly generated. Now, there are always goods that you can buy to make a profit by selling at your destination island while at the same time ensuring that you wouldn't be able to profit by reselling items between stores on the same island.</p>
+        </div>
+      </div>
+
+      <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);display:grid;gap:clamp(20px,4vw,60px);padding:clamp(28px,4vh,48px) 0;border-top:1px solid rgba(255,255,255,.1);" data-two>
+        <div>
+          <h3 style="margin:0 0 16px;font-size:clamp(22px,2.8vw,32px);font-weight:600;letter-spacing:-.01em;">Quests and story content</h3>
+          <p style="margin:0;color:#9aa0a8;font-size:clamp(15px,1.7vw,18px);line-height:1.75;text-wrap:pretty;">I made quite a lot of quests for the game. This included cutscenes, customizing NPCs appearance and behaviour, setting up special interactions for common objects, and a lot of other case-specific logic. I also built the logic for various interactive items, like documents, notes and treasure maps, plants and others.</p>
+        </div>
+      </div>
+    
+      <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);display:grid;gap:clamp(20px,4vw,60px);padding:clamp(28px,4vh,48px) 0;border-top:1px solid rgba(255,255,255,.1);" data-two>
+        <div>
+          <h3 style="margin:0 0 16px;font-size:clamp(22px,2.8vw,32px);font-weight:600;letter-spacing:-.01em;">Architecture and Zenject</h3>
+          <p style="margin:0;color:#9aa0a8;font-size:clamp(15px,1.7vw,18px);line-height:1.75;text-wrap:pretty;">The project uses Zenject for dependency injection, and one of the trickier problems I dealt with was objects not being disposed properly when switching between scenes. Beyond that, it was important ot make sure the code I wrote matched the existing architecture, with its injections, databases, storages and settings.</p>
+        </div>
+      </div>
+    
+      <div data-reveal style="opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);display:grid;gap:clamp(20px,4vw,60px);padding:clamp(28px,4vh,48px) 0;border-top:1px solid rgba(255,255,255,.1);" data-two>
+        <div>
+          <h3 style="margin:0 0 16px;font-size:clamp(22px,2.8vw,32px);font-weight:600;letter-spacing:-.01em;">Server, analytics and Steam</h3>
+          <p style="margin:0;color:#9aa0a8;font-size:clamp(15px,1.7vw,18px);line-height:1.75;text-wrap:pretty;">I worked with our custom server on events, the bug-reporting feature (including a bug that made it send duplicate reports), token and user ID issues, and email subscriptions. I also set up game analytics and handled Steam features like achievements and cloud saves.</p>
+        </div>
+      </div>
+    
+  </section>
+
+  <section data-pin-wrap style="position:relative;">
+    <div style="position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;">
+      <div style="max-width:1100px;width:100%;margin:0 auto;padding:0 clamp(20px,5vw,56px);display:flex;justify-content:space-between;align-items:baseline;margin-bottom:26px;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.28em;color:#2fe6a8;text-transform:uppercase;">Screenshots</div>
+        <!-- <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;color:#5a606a;text-transform:uppercase;">scroll to pan →</div> -->
+      </div>
+      <div data-htrack style="display:flex;gap:16px;padding:0 clamp(20px,5vw,56px);will-change:transform;">
+        
+          <div style="flex:0 0 clamp(280px,72vw,640px);aspect-ratio:16/9;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;">
+            <img src="assets/corsairs_legacy_1.png" alt="Corsairs Legacy screenshot 1" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div style="flex:0 0 clamp(280px,72vw,640px);aspect-ratio:16/9;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;">
+            <img src="assets/corsairs_legacy_2.jpg" alt="Corsairs Legacy screenshot 2" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div style="flex:0 0 clamp(280px,72vw,640px);aspect-ratio:16/9;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;">
+            <img src="assets/corsairs_legacy_3.png" alt="Corsairs Legacy screenshot 3" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div style="flex:0 0 clamp(280px,72vw,640px);aspect-ratio:16/9;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;">
+            <img src="assets/corsairs_legacy_4.jpg" alt="Corsairs Legacy screenshot 4" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div style="flex:0 0 clamp(280px,72vw,640px);aspect-ratio:16/9;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;">
+            <img src="assets/corsairs_legacy_5.png" alt="Corsairs Legacy screenshot 5" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div style="flex:0 0 clamp(280px,72vw,640px);aspect-ratio:16/9;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;">
+            <img src="assets/corsairs_legacy_6.jpg" alt="Corsairs Legacy screenshot 6" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div style="flex:0 0 clamp(280px,72vw,640px);aspect-ratio:16/9;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;">
+            <img src="assets/corsairs_legacy_7.jpg" alt="Corsairs Legacy screenshot 7" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div style="flex:0 0 clamp(280px,72vw,640px);aspect-ratio:16/9;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;">
+            <img src="assets/corsairs_legacy_8.png" alt="Corsairs Legacy screenshot 7" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div style="flex:0 0 clamp(280px,72vw,640px);aspect-ratio:16/9;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;">
+            <img src="assets/corsairs_legacy_9.png" alt="Corsairs Legacy screenshot 7" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div style="flex:0 0 clamp(280px,72vw,640px);aspect-ratio:16/9;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;">
+            <img src="assets/corsairs_legacy_10.png" alt="Corsairs Legacy screenshot 7" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div style="flex:0 0 clamp(280px,72vw,640px);aspect-ratio:16/9;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;">
+            <img src="assets/corsairs_legacy_11.png" alt="Corsairs Legacy screenshot 7" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div style="flex:0 0 clamp(280px,72vw,640px);aspect-ratio:16/9;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;">
+            <img src="assets/corsairs_legacy_12.jpg" alt="Corsairs Legacy screenshot 7" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div style="flex:0 0 clamp(280px,72vw,640px);aspect-ratio:16/9;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;">
+            <img src="assets/corsairs_legacy_13.png" alt="Corsairs Legacy screenshot 7" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div style="flex:0 0 clamp(280px,72vw,640px);aspect-ratio:16/9;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;">
+            <img src="assets/corsairs_legacy_14.png" alt="Corsairs Legacy screenshot 7" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div style="flex:0 0 clamp(280px,72vw,640px);aspect-ratio:16/9;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;">
+            <img src="assets/corsairs_legacy_15.jpg" alt="Corsairs Legacy screenshot 7" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div style="flex:0 0 clamp(280px,72vw,640px);aspect-ratio:16/9;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;">
+            <img src="assets/corsairs_legacy_16.png" alt="Corsairs Legacy screenshot 7" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div style="flex:0 0 clamp(280px,72vw,640px);aspect-ratio:16/9;border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;">
+            <img src="assets/corsairs_legacy_17.jpg" alt="Corsairs Legacy screenshot 7" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width:1100px;margin:0 auto;padding:clamp(60px,9vh,110px) clamp(20px,5vw,56px) clamp(80px,12vh,140px);text-align:center;">
+    <a href="index.html#work" data-cursor style="display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.14em;color:#9aa0a8;text-transform:uppercase;" class="dc-hv-2"><span style="color:#2fe6a8;">←</span> Back to all projects</a>
+  </section>
+</div>
+<script type="module">
+  import { initAll } from './portfolio.js';
+  initAll();
+</script>
+</body>
+</html>

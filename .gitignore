@@ -1,0 +1,13 @@
+# VS Code
+.vscode/
+
+# Local environment / secrets
+.env
+.env.*
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
